@@ -63,9 +63,9 @@ namespace Fractural.Tasks
 
                 var newInstance = new GDTaskPlayerLoopAutoload();
                 newInstance.Initialize();
-                var currentScene = ((SceneTree)Engine.GetMainLoop()).CurrentScene;
-                currentScene.AddChild(newInstance);
-                currentScene.MoveChild(newInstance, 0);
+                var root = ((SceneTree)Engine.GetMainLoop()).Root;
+                root.AddChild(newInstance);
+                root.MoveChild(newInstance, 0);
                 newInstance.Name = "GDTaskPlayerLoopAutoload";
                 s_Global = newInstance;
 
