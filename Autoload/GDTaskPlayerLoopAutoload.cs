@@ -65,7 +65,7 @@ namespace Fractural.Tasks
                 newInstance.Initialize();
                 var root = ((SceneTree)Engine.GetMainLoop()).Root;
                 root.CallDeferred(Node.MethodName.AddChild, newInstance, false, Variant.From(InternalMode.Front));
-                root.MoveChild(newInstance, 0);
+                root.CallDeferred(Node.MethodName.MoveChild, newInstance, 0);
                 newInstance.Name = "GDTaskPlayerLoopAutoload";
                 s_Global = newInstance;
 
@@ -89,7 +89,10 @@ namespace Fractural.Tasks
                 s_Global = this;
                 return;
             }
-            QueueFree();
+            if (s_Global != this)
+            {
+                QueueFree();
+            }
         }
 
         private void Initialize()
