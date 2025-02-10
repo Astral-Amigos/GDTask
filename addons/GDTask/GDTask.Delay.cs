@@ -72,12 +72,12 @@ namespace Fractural.Tasks
 
         public static YieldAwaitable WaitForEndOfFrame()
         {
-            return GDTask.Yield(PlayerLoopTiming.Process);
+            return GDTask.Yield(PlayerLoopTiming.PauseProcess);
         }
 
         public static GDTask WaitForEndOfFrame(CancellationToken cancellationToken)
         {
-            return GDTask.Yield(PlayerLoopTiming.Process, cancellationToken);
+            return GDTask.Yield(PlayerLoopTiming.PauseProcess, cancellationToken);
         }
 
         /// <summary>
